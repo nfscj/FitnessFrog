@@ -10,7 +10,7 @@ namespace FitnessFrog
     {
         static void Main(string[] args)
         {
-            int runningTotal = 0;
+            double runningTotal = 0;
 
             bool keepGoing = true;
             while (keepGoing)
@@ -19,7 +19,7 @@ namespace FitnessFrog
                 Console.Write("Enter how many minutes you exercised or type \"quit\" to exit: ");
                 string entry = Console.ReadLine();
 
-                if (entry == "quit")
+                if (entry.ToLower() == "quit")
                 {
                     keepGoing = false;
                 }
@@ -28,7 +28,7 @@ namespace FitnessFrog
                     // Add minutes exercised to total
                     try
                     {
-                        int minutes = int.Parse(entry);
+                        double minutes = double.Parse(entry);
 
                         if (minutes <= 0)
                         {
