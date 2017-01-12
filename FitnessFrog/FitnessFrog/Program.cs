@@ -12,11 +12,30 @@ namespace FitnessFrog
         {
             double runningTotal = 0;
 
+            string name = "";
+
+            Console.WriteLine("Welcome to Fitness Frog!");
+
+            //Ask the user for their name. This loop repeats until user enters appropriate name
+            while (true)
+            {
+                Console.WriteLine("\n\nTo personalize your experience please enter your name:");
+
+                name = Console.ReadLine();
+                if (name.All(Char.IsLetter) == false)
+                {
+                    Console.WriteLine("\n\"{0}\" is not an acceptable entry. Your name must contain only letters A-Z.", name);
+                }
+                else if (name.All(Char.IsLetter) == true)
+                {
+                    break;
+                }
+            }
             
             while (true)
             {
                 // Prompt user for minutes exercised 
-                Console.Write("Enter how many minutes you exercised or type \"quit\" to exit: ");
+                Console.Write("\n\nEnter how many minutes you exercised or type \"quit\" to exit: ");
                 string entry = Console.ReadLine();
 
                 if (entry.ToLower() == "quit")
@@ -30,37 +49,38 @@ namespace FitnessFrog
 
                     if (minutes <= 0)
                     {
-                        Console.WriteLine(minutes + " is not an acceptable value.");
+                        Console.WriteLine("{0} is not an acceptable value.", minutes);
                         continue;
                     }
                     else if (minutes <= 10)
                     {
-                        Console.WriteLine("Better than nothing, am I right?");
+                        Console.WriteLine("\nBetter than nothing {0}, am I right?", name);
                     }
                     else if (minutes <= 30)
                     {
-                        Console.WriteLine("Way to go hot stuff!");
+                        Console.WriteLine("\nWay to go {0}!", name);
                     }
                     else if (minutes <= 60)
                     {
-                        Console.WriteLine("You must be a ninja warrior in training!");
+                        Console.WriteLine("\nWow {0}, you must be a ninja warrior in training!", name);
                     }
                     else
                     {
-                        Console.WriteLine("Okay, now you're just showing off!");
+                        Console.WriteLine("\nOkay {0}, now you're just showing off!", name);
                     }
 
                     runningTotal += minutes;
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("That is not valid input");
+                    Console.WriteLine("Sorry {0} but that is not a valid input", name);
                     continue;
                 } 
                     
                     
                 // Display total minutes exercised to the screen 
-                Console.WriteLine("You've entered " + runningTotal + " minutes.");
+                Console.WriteLine("You've exercised for {0} minutes.", runningTotal);
+                
                 // Repeat until user quits
             }
 
